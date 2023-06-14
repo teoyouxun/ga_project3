@@ -8,7 +8,8 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import { Home } from './components/Home'
 import { SignUp } from './components/SignUp'
 import { Login } from './components/Login'
-import { NotFound } from './components/NotFound';
+import { NotFound } from './components/NotFound'
+import { AddProducts } from './components/AddProducts'
 
 
 export const App = () => {
@@ -20,6 +21,7 @@ export const App = () => {
             
             <Route path="/signup" element={ <SignUp />} />
             <Route path="/login" element={ <Login />} />
+            <Route path="/add-products" element={ <AddProducts />} />
             {/* <Route path="/login" element={ <NotFound />} /> Switch + component deprecated, look for another solution to this*/} 
         
             </Routes>
