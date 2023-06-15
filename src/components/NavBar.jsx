@@ -37,7 +37,7 @@ export const NavBar = ({user}) => {
                     <div><Link to="/login">Login</Link></div>
                 </>} 
 
-                {/* if user is not logged in, display links on page, otherwise... */}
+                {/* if user is not logged in, display links on page, otherwise...the code below runs */}
 
                 {user&&<>
                     <div><Link className='navlink' to="/">{user}</Link></div>
