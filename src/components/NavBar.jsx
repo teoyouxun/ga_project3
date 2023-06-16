@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import logo from '../images/logo.png'
+import logo1 from '../images/logo1.png'
 import { Icon } from 'react-icons-kit'
 import { shoppingCart } from 'react-icons-kit/feather/shoppingCart'
 import { auth } from '../Config/Config'
 import { signOut } from 'firebase/auth'
 
-export const NavBar = ({user}) => {
+export const NavBar = ({user, totalProducts}) => {
 
     const [successMsg, setSuccessMsg] = useState('');
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ export const NavBar = ({user}) => {
         <div className='navbar'>
             <div className='leftside'>
                 <div className='logo'>
-                    <img src={logo} alt="logo"/>
+                    <img src={logo1} alt="logo"/>
                 </div>
             </div>
             <div className='rightside'>
@@ -45,7 +45,7 @@ export const NavBar = ({user}) => {
                         <Link className='navlink' to="/cart">
                             <Icon icon={shoppingCart} size={20}/>
                         </Link>
-                        {/* <span className='cart-indicator'>{totalQty}</span> */}
+                        <span className='cart-indicator'>{totalProducts}</span>
                     </div>
                     <div className='btn btn-danger btn-md' onClick={handleLogout}>
                         {successMsg ? successMsg : 'Logout'}

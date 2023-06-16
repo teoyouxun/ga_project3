@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'; // Firebase listener to get the currently signed-in user
-import { doc, getDoc, getDocs, collection, setDoc } from 'firebase/firestore';
+import { doc, getDoc, getDocs, collection, setDoc, onSnapshot } from 'firebase/firestore';
 import { NavBar } from './NavBar'
 import { Products } from './Products'
 import { auth, db } from '../Config/Config';
@@ -83,6 +83,37 @@ export const Home = () => {
         getProducts();
     },[]) // useEffect runs once only
 
+    // state of totalProducts
+    const [totalProducts, setTotalProducts]=useState(0);
+    // getting cart products   
+    useEffect(()=>{   
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
+              const cartCollectionRef = collection(db, 'Cart ' + user.uid);
+              const unsubscribeCart = onSnapshot(cartCollectionRef, (snapshot) => {
+                const qty = snapshot.docs.length;
+                setTotalProducts(qty);
+              });
+              return unsubscribeCart;
+            }
+          });
+      
+          return () => {
+            unsubscribe();
+          };     
+        // auth.onAuthStateChanged(user=>{
+        //     if(user){
+        //         fs.collection('Cart ' + user.uid).onSnapshot(snapshot=>{
+        //             const qty = snapshot.docs.length;
+        //             setTotalProducts(qty);
+        //         })
+        //     }
+        // })       
+    },[])  
+
+    // globl variable
+    let Product;
+
     const addToCart = async (product) => {
         if(uid!==null){
             // console.log(product);
@@ -106,7 +137,7 @@ export const Home = () => {
 
     return (
         <>
-            <NavBar user={user}/>           
+            <NavBar user={user} totalProducts={totalProducts}/>           
             <br></br>
             {products.length > 0 && (
                 <div className='container-fluid'>

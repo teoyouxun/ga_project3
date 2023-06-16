@@ -138,3 +138,5 @@ export const AddProducts = () => {
         </div>
     )
 }
+
+// This component is not practical, as it should be only allowed for admins. However, this would require Firebase's role-based access control, which requires Firebase Cloud, which is not free
