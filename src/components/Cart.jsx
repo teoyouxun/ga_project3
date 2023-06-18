@@ -4,7 +4,6 @@ import { auth, db } from '../Config/Config'
 import { onAuthStateChanged } from 'firebase/auth'
 import { CartProducts } from './CartProducts';
 import { collection, query, onSnapshot, doc, getDoc, updateDoc } from 'firebase/firestore'
-import { StripeCheckout } from 'react-stripe-checkout';
 
 export const Cart = () => {
 
@@ -168,7 +167,7 @@ export const Cart = () => {
                         Total No of Products: <span>{totalQty}</span>
                         </div>
                         <div>
-                        Total Price to Pay: <span>$ {totalPrice}</span>
+                        Total Price: <span>$ {totalPrice}</span>
                         </div>
                         <br></br>
                         <button className='btn btn-secondary btn-md' 
