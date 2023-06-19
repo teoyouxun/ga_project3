@@ -30,13 +30,13 @@ Open your browser and type url https://localhost:5173/ (or whichever local serve
 
 ## For future add-ons and to-dos :notebook_with_decorative_cover:
 
-Stripe/Paypal or relevant payment API system
-```
-Deployment (reattempt deploying to Firebase, otherwise to look for alternatives e.g. Fly.io)
-```
-Update Readme file with screenshots and wireframe
-```
-Further CSS updates and tweaks
+* Stripe/Paypal or relevant payment API system
+
+* Deployment (reattempt deploying to Firebase, otherwise to look for alternatives e.g. Fly.io)
+
+* Update Readme file with screenshots and wireframe
+
+* Further CSS updates and tweaks
 
 
 
